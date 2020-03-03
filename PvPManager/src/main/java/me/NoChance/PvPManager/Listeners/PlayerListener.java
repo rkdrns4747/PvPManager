@@ -1,7 +1,9 @@
 package me.NoChance.PvPManager.Listeners;
 
 import java.util.HashMap;
+import java.util.List;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -132,6 +134,24 @@ public class PlayerListener implements Listener {
 			switch (mode) {
 			case DROP:
 				if (!pvpDeath && !pvPlayer.isInCombat()) {
+					ItemStack[] iSs = player.getInventory().getContents();
+					int index = 70; //not exist
+					for(ItemStack is : iSs){
+						if(is.getItemMeta().hasLore()){
+							player.sendMessage("hasLore");
+							List<String> lores = is.getItemMeta().getLore();
+							for(String lore : lores){
+								if(lore.contains(ChatColor.translateAlternateColorCodes('&',"&e&l*&f&l드랍방지&e&l*"))) {
+									player.sendMessage("드랍방지 아이템이 발견됨. 복사방지 적용.");
+									index = player.getInventory().first(is);
+									iSs = (ItemStack[]) ArrayUtils.remove(iSs, index);
+									player.getInventory().setContents(iSs);
+								}else{
+									continue;
+								}
+							}
+						}
+					}
 					event.setKeepInventory(true);
 					event.getDrops().clear();
 				}
