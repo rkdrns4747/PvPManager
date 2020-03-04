@@ -36,7 +36,6 @@ import me.NoChance.PvPManager.Settings.Settings;
 import me.NoChance.PvPManager.Settings.Settings.DropMode;
 import me.NoChance.PvPManager.Utils.CombatUtils;
 
-@SuppressWarnings("deprecation")
 public class PlayerListener implements Listener {
 
 	private final PlayerHandler ph;
@@ -86,6 +85,7 @@ public class PlayerListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGH)
 	public final void onPlayerDeath(final PlayerDeathEvent event) {
 		final Player player = event.getEntity();
+		player.sendMessage("Registered.");
 		if (!CombatUtils.isWorldAllowed(player.getWorld().getName()))
 			return;
 		final PvPlayer pvPlayer = ph.get(player);
@@ -133,25 +133,8 @@ public class PlayerListener implements Listener {
 			final DropMode mode = Settings.getDropMode();
 			switch (mode) {
 			case DROP:
+				//Bukkit.getLogger().info("HI");
 				if (!pvpDeath && !pvPlayer.isInCombat()) {
-					ItemStack[] iSs = player.getInventory().getContents();
-					int index = 70; //not exist
-					for(ItemStack is : iSs){
-						if(is.getItemMeta().hasLore()){
-							player.sendMessage("hasLore");
-							List<String> lores = is.getItemMeta().getLore();
-							for(String lore : lores){
-								if(lore.contains(ChatColor.translateAlternateColorCodes('&',"&e&l*&f&l드랍방지&e&l*"))) {
-									player.sendMessage("드랍방지 아이템이 발견됨. 복사방지 적용.");
-									index = player.getInventory().first(is);
-									iSs = (ItemStack[]) ArrayUtils.remove(iSs, index);
-									player.getInventory().setContents(iSs);
-								}else{
-									continue;
-								}
-							}
-						}
-					}
 					event.setKeepInventory(true);
 					event.getDrops().clear();
 				}

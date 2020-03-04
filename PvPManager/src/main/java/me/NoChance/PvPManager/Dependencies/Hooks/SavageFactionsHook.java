@@ -1,7 +1,7 @@
 package me.NoChance.PvPManager.Dependencies.Hooks;
 
 import org.bukkit.entity.Player;
-
+/**
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.struct.Relation;
 import com.massivecraft.factions.zcore.persist.MemoryFPlayer;
@@ -33,3 +33,4 @@ public class SavageFactionsHook extends BaseDependency implements PvPDependency 
 	}
 
 }
+**/

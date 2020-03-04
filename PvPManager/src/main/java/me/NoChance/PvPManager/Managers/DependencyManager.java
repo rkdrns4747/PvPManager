@@ -18,7 +18,7 @@ import me.NoChance.PvPManager.Dependencies.RegionDependency;
 import me.NoChance.PvPManager.Dependencies.WorldGuardHook;
 import me.NoChance.PvPManager.Dependencies.Hooks.FactionsHook;
 import me.NoChance.PvPManager.Dependencies.Hooks.FactionsUUIDHook;
-import me.NoChance.PvPManager.Dependencies.Hooks.SavageFactionsHook;
+//import me.NoChance.PvPManager.Dependencies.Hooks.SavageFactionsHook;
 import me.NoChance.PvPManager.Dependencies.Hooks.SimpleClansHook;
 import me.NoChance.PvPManager.Dependencies.Hooks.VaultHook;
 import me.NoChance.PvPManager.Dependencies.Hooks.WorldGuardLegacyHook;
@@ -68,7 +68,7 @@ public class DependencyManager {
 		case FACTIONS:
 			final String fVersion = hook.getVersion();
 			if (fVersion.contains("RC")) {
-				registerDependency(new SavageFactionsHook(hook));
+				//registerDependency(new SavageFactionsHook(hook));
 			} else if (fVersion.contains("U")) {
 				registerDependency(new FactionsUUIDHook(hook));
 			} else if (CombatUtils.isVersionAtLeast(fVersion, "2.7")) {
