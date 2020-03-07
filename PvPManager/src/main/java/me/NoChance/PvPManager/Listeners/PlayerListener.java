@@ -54,7 +54,6 @@ public class PlayerListener implements Listener {
 
 	@EventHandler(ignoreCancelled = true)
 	public final void onBlockPlace(final BlockPlaceEvent event) {
-		Bukkit.getLogger().info("Interacted.");
 		if (Settings.isBlockPlaceBlocks() && ph.get(event.getPlayer()).isInCombat()) {
 			event.setCancelled(true);
 		}
@@ -86,7 +85,6 @@ public class PlayerListener implements Listener {
 	@EventHandler(priority = EventPriority.HIGH)
 	public final void onPlayerDeath(final PlayerDeathEvent event) {
 		final Player player = event.getEntity();
-		player.sendMessage("Registered.");
 		if (!CombatUtils.isWorldAllowed(player.getWorld().getName()))
 			return;
 		final PvPlayer pvPlayer = ph.get(player);
@@ -279,7 +277,7 @@ public class PlayerListener implements Listener {
 				player.message(Messages.getEnderpearlBlockedIncombat());
 			} else if (event.getCause().equals(TeleportCause.COMMAND) && Settings.isBlockTeleport()) {
 				event.setCancelled(true);
-				player.message("§cYou can't teleport while in combat!");
+				player.message("§c전투 상태에서는 순간이동이 금지됩니다!");
 			}
 	}
 
@@ -299,7 +297,7 @@ public class PlayerListener implements Listener {
 			if (player.isNewbie() && CombatUtils.recursiveContainsCommand(givenCommand, Settings.getNewbieBlacklist())) {
 				event.setCancelled(true);
 				// TODO Make configurable
-				player.message("§cYou cannot use this command while you have PvP protection!");
+				player.message("§cPVP보호 상태에서는 해당 명령어를 사용할 수 없습니다!");
 			}
 		}
 

@@ -22,10 +22,10 @@ public class Tag implements CommandExecutor {
 		if (args.length == 0 && sender instanceof Player) {
 			final PvPlayer pvPlayer = ph.get((Player) sender);
 			if (!pvPlayer.isInCombat())
-				pvPlayer.message("§cYou are not in combat");
+				pvPlayer.message("§c현재 전투상태에 있지 않습니다.");
 			else {
 				final long timeLeft = (pvPlayer.getTaggedTime() + Settings.getTimeInCombat() * 1000 - System.currentTimeMillis()) / 1000;
-				pvPlayer.message(String.format("§8You are in combat for another %d seconds", timeLeft));
+				pvPlayer.message(String.format("§8이제 %d초간 전투 상태가 유지됩니다.", timeLeft));
 			}
 			return true;
 		} else if (!(sender instanceof Player)) {

@@ -67,7 +67,7 @@ public class PM implements CommandExecutor {
 				p = plugin.getPlayerHandler().get((Player) sender);
 			} else if (args.length == 3) {
 				if (!CombatUtils.isOnline(args[2])) {
-					sender.sendMessage("§4Player not online!");
+					sender.sendMessage("§4플레이어가 온라인이 아닙니다!");
 					return true;
 				}
 				p = plugin.getPlayerHandler().get(Bukkit.getPlayer(args[2]));

@@ -40,7 +40,7 @@ public class PlayerMoveListener implements Listener {
 				newVel.setY(newVel.getY() + 0.1).normalize().multiply(1.5);
 
 				event.getPlayer().setVelocity(newVel);
-				event.getPlayer().sendMessage("§cYou can't run away to safezones while in PvP!");
+				event.getPlayer().sendMessage("§cPVP 중에는 안전지역으로 들어갈 수 없습니다!");
 
 				cache.put(event.getPlayer().getUniqueId(), event.getPlayer());
 			}

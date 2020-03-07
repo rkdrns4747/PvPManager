@@ -21,7 +21,7 @@ public class PvPOverride implements CommandExecutor {
 		if (sender instanceof Player) {
 			final PvPlayer pvPlayer = ph.get((Player) sender);
 			final boolean override = pvPlayer.toggleOverride();
-			pvPlayer.message("§2PvP Override Set To: " + override);
+			pvPlayer.message("§2PvP 무시 설정이 " + override +" 으로 설정되었습니다.");
 		}
 		return true;
 	}

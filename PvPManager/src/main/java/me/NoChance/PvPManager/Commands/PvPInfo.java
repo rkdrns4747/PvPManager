@@ -44,7 +44,7 @@ public class PvPInfo implements CommandExecutor {
 		sender.sendMessage(ChatColor.GREEN + "- 전투상태 여부: §f" + target.isInCombat());
 		sender.sendMessage(ChatColor.GREEN + "- 뉴비 여부: §f" + target.isNewbie());
 		sender.sendMessage(ChatColor.GREEN + "- 현재 월드: §f" + target.getWorldName());
-		sender.sendMessage(ChatColor.GREEN + "- Override PvP: §f" + target.hasOverride());
+		sender.sendMessage(ChatColor.GREEN + "- PVP 무시설정 여부: §f" + target.hasOverride());
 	}
 
 }

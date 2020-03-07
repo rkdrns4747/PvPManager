@@ -60,7 +60,6 @@ public final class PvPManager extends JavaPlugin {
 		getCommand("pvpstatus").setExecutor(new PvPStatus(playerHandler));
 		getCommand("tag").setExecutor(new Tag(playerHandler));
 		getCommand("announce").setExecutor(new Announce());
-		Bukkit.getLogger().info("halo");
 		startMetrics();
 		Log.info("PvPManager Enabled (" + (System.currentTimeMillis() - start) + " ms)");
 	}

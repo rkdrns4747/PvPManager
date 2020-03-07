@@ -63,7 +63,7 @@ public class PvP implements CommandExecutor {
 							return false;
 					}
 					specifiedPlayer.setPvP(enable);
-					sender.sendMessage("§6[§8PvPManager§6] §2PvP " + (enable ? "enabled" : "disabled") + " for " + args[0]);
+					sender.sendMessage("§6[§8PvPManager§6] §2플레이어 "+args[0]+" 에 대한 PvP가 " + (enable ? "허용" : "금지") + " 되었습니다.");
 					return true;
 				}
 			}
