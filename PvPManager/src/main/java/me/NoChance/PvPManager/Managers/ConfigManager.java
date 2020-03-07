@@ -67,6 +67,7 @@ public class ConfigManager {
 		} else {
 			initConfig();
 		}
+		/**
 		if (Settings.isUpdateCheck()) {
 			new BukkitRunnable() {
 				@Override
@@ -75,6 +76,7 @@ public class ConfigManager {
 				}
 			}.runTaskTimerAsynchronously(plugin, 0, 360000);
 		}
+		 **/
 	}
 
 	private void initConfig() {

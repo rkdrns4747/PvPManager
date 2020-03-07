@@ -16,11 +16,13 @@ import me.NoChance.PvPManager.Commands.PvPOverride;
 import me.NoChance.PvPManager.Commands.PvPStatus;
 import me.NoChance.PvPManager.Commands.Tag;
 import me.NoChance.PvPManager.Libraries.Metrics.CustomMetrics;
+/**
 import me.NoChance.PvPManager.Libraries.Updater.BukkitUpdater;
 import me.NoChance.PvPManager.Libraries.Updater.SpigotUpdater;
 import me.NoChance.PvPManager.Libraries.Updater.Updater;
 import me.NoChance.PvPManager.Libraries.Updater.Updater.UpdateResult;
 import me.NoChance.PvPManager.Libraries.Updater.Updater.UpdateType;
+ **/
 import me.NoChance.PvPManager.Listeners.EntityListener;
 import me.NoChance.PvPManager.Listeners.PlayerListener;
 import me.NoChance.PvPManager.Managers.ConfigManager;
@@ -35,7 +37,7 @@ public final class PvPManager extends JavaPlugin {
 
 	private ConfigManager configM;
 	private PlayerHandler playerHandler;
-	private Updater updater;
+	//private Updater updater;
 	private LogFile log;
 	private DependencyManager dependencyManager;
 	private static PvPManager instance;
@@ -58,6 +60,7 @@ public final class PvPManager extends JavaPlugin {
 		getCommand("pvpstatus").setExecutor(new PvPStatus(playerHandler));
 		getCommand("tag").setExecutor(new Tag(playerHandler));
 		getCommand("announce").setExecutor(new Announce());
+		Bukkit.getLogger().info("halo");
 		startMetrics();
 		Log.info("PvPManager Enabled (" + (System.currentTimeMillis() - start) + " ms)");
 	}
@@ -85,7 +88,7 @@ public final class PvPManager extends JavaPlugin {
 	private void startMetrics() {
 		new CustomMetrics(this);
 	}
-
+/**
 	public void checkForUpdates() {
 		Log.info("Checking for updates...");
 		updater = new BukkitUpdater(this, 63773, UpdateType.VERSION_CHECK);
@@ -109,7 +112,7 @@ public final class PvPManager extends JavaPlugin {
 			Log.info("No update found");
 		}
 	}
-
+**/
 	private void registerListener(final Listener listener) {
 		this.getServer().getPluginManager().registerEvents(listener, this);
 	}
@@ -129,11 +132,11 @@ public final class PvPManager extends JavaPlugin {
 	public DependencyManager getDependencyManager() {
 		return dependencyManager;
 	}
-
+/**
 	public Updater getUpdater() {
 		return updater;
 	}
-
+**/
 	/**
 	 * @return instance of PvPManager
 	 */

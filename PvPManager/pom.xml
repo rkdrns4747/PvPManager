@@ -128,7 +128,7 @@
 		<dependency>
 			<groupId>org.spigotmc</groupId>
 			<artifactId>spigot-api</artifactId>
-			<version>1.15-R0.1-SNAPSHOT</version>
+			<version>1.15.2-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
@@ -205,14 +205,15 @@
 			</exclusions>
 		</dependency>
 
-		<!-- SavageFactions
+		<!-- SavageFactions-->
 		<dependency>
 				<groupId>com.massivecraft</groupId>
 				<artifactId>SavageFactions</artifactId>
 				<version>2.5-RC-9</version>
-				<scope>provided</scope>
+				<scope>system</scope>
+				<systemPath>${project.basedir}/src/main/resources/SavageFactions-2.5-RC-9.jar</systemPath>
 				<optional>true</optional>
-		</dependency>-->
+		</dependency>
 
 		<dependency>
 			<groupId>net.milkbowl.vault</groupId>

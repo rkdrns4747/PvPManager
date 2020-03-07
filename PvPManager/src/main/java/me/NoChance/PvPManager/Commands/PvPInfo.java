@@ -38,12 +38,12 @@ public class PvPInfo implements CommandExecutor {
 
 	private void sendInfo(final CommandSender sender, final PvPlayer target) {
 		sender.sendMessage(ChatColor.YELLOW + "§lPvPManager Info");
-		sender.sendMessage(ChatColor.GREEN + "- Name: §f" + target.getName());
+		sender.sendMessage(ChatColor.GREEN + "- 닉네임: §f" + target.getName());
 		sender.sendMessage(ChatColor.GREEN + "- UUID: §f" + target.getUUID());
-		sender.sendMessage(ChatColor.GREEN + "- PvP Status: §f" + target.hasPvPEnabled());
-		sender.sendMessage(ChatColor.GREEN + "- In Combat: §f" + target.isInCombat());
-		sender.sendMessage(ChatColor.GREEN + "- Newbie: §f" + target.isNewbie());
-		sender.sendMessage(ChatColor.GREEN + "- World: §f" + target.getWorldName());
+		sender.sendMessage(ChatColor.GREEN + "- PVP 허용여부: §f" + target.hasPvPEnabled());
+		sender.sendMessage(ChatColor.GREEN + "- 전투상태 여부: §f" + target.isInCombat());
+		sender.sendMessage(ChatColor.GREEN + "- 뉴비 여부: §f" + target.isNewbie());
+		sender.sendMessage(ChatColor.GREEN + "- 현재 월드: §f" + target.getWorldName());
 		sender.sendMessage(ChatColor.GREEN + "- Override PvP: §f" + target.hasOverride());
 	}
 

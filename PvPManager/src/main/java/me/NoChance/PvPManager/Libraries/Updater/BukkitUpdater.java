@@ -16,7 +16,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 import me.NoChance.PvPManager.Utils.Log;
-
+/**
 public class BukkitUpdater extends Updater {
 
 	private URL url;
@@ -104,3 +104,4 @@ public class BukkitUpdater extends Updater {
 	}
 
 }
+**/

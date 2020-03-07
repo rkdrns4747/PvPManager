@@ -150,12 +150,6 @@ PvP Toggle:
   Force On Change World: false
   WorldGuard Overrides: true
 
-# Should PvPManager be allowed to check for updates and tell you about them
-# Auto Update - After checking should we download it automatically for you?
-Update Check:
-  Enabled: true
-  Auto Update: true
-
 Metrics:
   Opt-out: false
 

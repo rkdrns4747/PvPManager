@@ -6,7 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
 import me.NoChance.PvPManager.Utils.Log;
-
+/**
 public abstract class Updater {
 
 	public enum UpdateType {
@@ -175,3 +175,4 @@ public abstract class Updater {
 	public abstract boolean downloadFile();
 
 }
+**/

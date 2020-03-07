@@ -46,7 +46,7 @@ public class PlayerListener implements Listener {
 		this.ph = ph;
 		this.wg = (WorldGuardHook) ph.getPlugin().getDependencyManager().getDependency(Hook.WORLDGUARD);
 		if (CombatUtils.isVersionAtLeast(Settings.getMinecraftVersion(), "1.13")) {
-			mushroomSoup = Material.MUSHROOM_STEW;
+			mushroomSoup = Material.getMaterial("MUSHROOM_STEW");
 		} else if (CombatUtils.isVersionAtLeast(Settings.getMinecraftVersion(), "1.0")) { // avoid loading Material class on unit tests
 			mushroomSoup = Material.getMaterial("MUSHROOM_SOUP");
 		}
@@ -54,6 +54,7 @@ public class PlayerListener implements Listener {
 
 	@EventHandler(ignoreCancelled = true)
 	public final void onBlockPlace(final BlockPlaceEvent event) {
+		Bukkit.getLogger().info("Interacted.");
 		if (Settings.isBlockPlaceBlocks() && ph.get(event.getPlayer()).isInCombat()) {
 			event.setCancelled(true);
 		}
@@ -135,6 +136,37 @@ public class PlayerListener implements Listener {
 			case DROP:
 				//Bukkit.getLogger().info("HI");
 				if (!pvpDeath && !pvPlayer.isInCombat()) {
+					player.sendMessage("hi2");
+					ItemStack[] iSs = player.getInventory().getContents();
+					player.sendMessage("콘텐츠 확인");
+					int index = 70; //not exist
+					for(ItemStack is : iSs){
+						//player.sendMessage("반복문 실행중");
+						if(is == null)
+							continue;
+
+						if(is.hasItemMeta()){
+							player.sendMessage("hasItemMeta");
+							if(is.getItemMeta().hasLore()) {
+								player.sendMessage("hasLore");
+								List<String> lores = is.getItemMeta().getLore();
+								for (String lore : lores) {
+									if (lore.contains(ChatColor.translateAlternateColorCodes('&', "&e&l*&f&l드랍방지&e&l*"))) {
+										if(player.getInventory().firstEmpty() == -1)
+											continue;
+
+										player.sendMessage("드랍방지 아이템이 발견됨. 복사방지 적용.");
+										index = player.getInventory().first(is);
+										player.sendMessage(index+"에 있는 아이템을 제거.");
+										iSs = (ItemStack[]) ArrayUtils.remove(iSs, index);
+										player.getInventory().setContents(iSs);
+									} else {
+										continue;
+									}
+								}
+							}
+						}
+					}
 					event.setKeepInventory(true);
 					event.getDrops().clear();
 				}

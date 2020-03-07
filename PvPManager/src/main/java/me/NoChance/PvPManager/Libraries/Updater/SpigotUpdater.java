@@ -8,7 +8,7 @@ import java.util.Scanner;
 import org.bukkit.plugin.Plugin;
 
 import me.NoChance.PvPManager.Utils.Log;
-
+/**
 public class SpigotUpdater extends Updater {
 
 	public SpigotUpdater(final Plugin plugin, final int id, final UpdateType type) {
@@ -37,3 +37,4 @@ public class SpigotUpdater extends Updater {
 	}
 
 }
+**/

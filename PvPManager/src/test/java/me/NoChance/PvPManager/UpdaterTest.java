@@ -8,7 +8,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-
+/**
 import me.NoChance.PvPManager.Libraries.Updater.Updater;
 import me.NoChance.PvPManager.Libraries.Updater.Updater.UpdateType;
 
@@ -65,3 +65,4 @@ public class UpdaterTest {
 	}
 
 }
+**/

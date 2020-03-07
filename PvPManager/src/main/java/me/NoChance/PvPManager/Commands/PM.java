@@ -42,6 +42,7 @@ public class PM implements CommandExecutor {
 				sender.sendMessage(Messages.getErrorPermission());
 				return true;
 			}
+			/**
 			if (args[0].equalsIgnoreCase("update") && sender.hasPermission("pvpmanager.admin")) {
 				if (Settings.isUpdateCheck()) {
 					if (Settings.isUpdate()) {
@@ -57,7 +58,7 @@ public class PM implements CommandExecutor {
 					sender.sendMessage("§4Update Checking is disabled, enable it in the Config file");
 				}
 				return true;
-			}
+			}**/
 			sender.sendMessage(Messages.getErrorPermission());
 			return true;
 		} else if (args.length > 1 && args[0].equalsIgnoreCase("debug") && sender.hasPermission("pvpmanager.debug")) {

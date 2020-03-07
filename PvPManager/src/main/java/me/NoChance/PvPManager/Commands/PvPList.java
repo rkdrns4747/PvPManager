@@ -20,7 +20,7 @@ public class PvPList implements CommandExecutor {
 
 	@Override
 	public final boolean onCommand(final CommandSender sender, final Command cmd, final String label, final String[] args) {
-		sender.sendMessage(ChatColor.GOLD + "**** Players With PvP Enabled ****");
+		sender.sendMessage(ChatColor.GOLD + "**** PVP가 허용된 플레이어 목록 ****");
 		sender.sendMessage(ChatColor.DARK_GRAY + (sender instanceof Player ? pvpList((Player) sender, false) : pvpList(null, true)));
 		return true;
 	}
