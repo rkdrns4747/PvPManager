@@ -1,5 +1,6 @@
 package me.NoChance.PvPManager.Listeners;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
 
@@ -132,34 +133,65 @@ public class PlayerListener implements Listener {
 			final DropMode mode = Settings.getDropMode();
 			switch (mode) {
 			case DROP:
-				//Bukkit.getLogger().info("HI");
 				if (!pvpDeath && !pvPlayer.isInCombat()) {
-					player.sendMessage("hi2");
 					ItemStack[] iSs = player.getInventory().getContents();
-					player.sendMessage("콘텐츠 확인");
-					int index = 70; //not exist
+					int count = 0;
+					for(int i = 0; i < 36; i++){
+						if(iSs[i] == null || iSs[i].getType().equals(Material.AIR))
+							count++;
+					}
+					//player.sendMessage("빈슬롯개수: "+count);
+
 					for(ItemStack is : iSs){
-						//player.sendMessage("반복문 실행중");
 						if(is == null)
 							continue;
 
 						if(is.hasItemMeta()){
-							player.sendMessage("hasItemMeta");
 							if(is.getItemMeta().hasLore()) {
-								player.sendMessage("hasLore");
 								List<String> lores = is.getItemMeta().getLore();
 								for (String lore : lores) {
 									if (lore.contains(ChatColor.translateAlternateColorCodes('&', "&e&l*&f&l드랍방지&e&l*"))) {
-										if(player.getInventory().firstEmpty() == -1)
+										if(count < 1)
 											continue;
 
-										player.sendMessage("드랍방지 아이템이 발견됨. 복사방지 적용.");
-										index = player.getInventory().first(is);
-										player.sendMessage(index+"에 있는 아이템을 제거.");
+										//player.sendMessage("드랍방지 아이템이 발견됨. 복사방지 적용.");
+										int index = ArrayUtils.indexOf(iSs, is);
+										if(index > 35 || index < 0) {
+											//player.sendMessage("인덱스 오류. 갑옷에서 캐치되는 방지.");
+											continue;
+										}
+										//player.sendMessage(index+"에 있는 아이템 제거 시도.");
 										iSs = (ItemStack[]) ArrayUtils.remove(iSs, index);
+										iSs = (ItemStack[]) ArrayUtils.add(iSs, index, new ItemStack(Material.AIR));
 										player.getInventory().setContents(iSs);
 									} else {
 										continue;
+									}
+								}
+							}
+						}
+					}
+					ItemStack[] armoriSs = player.getInventory().getArmorContents();
+					armor: for(ItemStack armor : armoriSs){
+						if(armor == null)
+							continue armor;
+
+						if(count < 1)
+							continue armor;
+
+						if(armor.hasItemMeta()) {
+							if (armor.getItemMeta().hasLore()) {
+								List<String> armorLores = armor.getItemMeta().getLore();
+								for (String armorLore : armorLores) {
+									if (armorLore.contains(ChatColor.translateAlternateColorCodes('&', "&e&l*&f&l드랍방지&e&l*"))) {
+										int armorIndex = ArrayUtils.indexOf(armoriSs, armor);
+										armoriSs = (ItemStack[]) ArrayUtils.remove(armoriSs, armorIndex);
+										armoriSs = (ItemStack[]) ArrayUtils.add(armoriSs, armorIndex, new ItemStack(Material.AIR));
+										player.getInventory().setArmorContents(armoriSs);
+										count--;
+										//player.sendMessage("빈 슬롯 개수 변경됨: "+ count);
+										//player.sendMessage(armorIndex + " 에 위치한 갑옷아이템이 확인됨. 복사방지 적용 시도.");
+										continue armor;
 									}
 								}
 							}
